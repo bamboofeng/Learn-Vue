@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .showRed {
+            background: red;
+        }
+    </style>
+</head>
+
+
+<body>
+    <!-- 需求：点击列表中的哪一项，那么该项的文字变成红色 -->
+    <div id="app">
+        <ul>
+            <!-- 利用currentIndex做跳板，初始没有索引和他相等，所有都无色，后面每次点击都将currentIndex赋值为点击的索引，点击索引自动变为红色 -->
+            <li v-for="(m, index) in movies" :class="{showRed: currentIndex === index}" v-on:click="changeColor(index)">{{m}} </li>
+        </ul>
+    </div>
+
+    <script src="../js/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {
+                movies: ['海王', "海尔兄弟", '火影忍者', '进击的巨人'],
+                currentIndex: -1
+            },
+            methods: {
+                changeColor: function(index) {
+                    this.currentIndex = index;
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
