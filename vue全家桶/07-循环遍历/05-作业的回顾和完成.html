@@ -8,7 +8,7 @@
     <title>Document</title>
     <style>
         .showRed {
-            background: red;
+            color: red;
         }
     </style>
 </head>
@@ -19,7 +19,7 @@
     <div id="app">
         <ul>
             <!-- 利用currentIndex做跳板，初始没有索引和他相等，所有都无色，后面每次点击都将currentIndex赋值为点击的索引，点击索引自动变为红色 -->
-            <li v-for="(m, index) in movies" :class="{showRed: currentIndex === index}" v-on:click="changeColor(index)">{{m}} </li>
+            <li v-for="(item, index) in movies" :class="{showRed: currentIndex === index}" v-on:click="changeColor(index)">{{item}} </li>
         </ul>
     </div>
 
@@ -29,7 +29,7 @@
             el: '#app',
             data: {
                 movies: ['海王', "海尔兄弟", '火影忍者', '进击的巨人'],
-                currentIndex: -1
+                currentIndex: 0
             },
             methods: {
                 changeColor: function(index) {
